@@ -1,3 +1,9 @@
+const VERIFICATION_TOKEN = process.env.SLACK_VERIFICATION_TOKEN
+
 module.exports = (req, res) => {
-  console.log(req.body)
+  const { token, ...body } = req.body
+
+  if (token === VERIFICATION_TOKEN) {
+    console.log(body)
+  }
 }

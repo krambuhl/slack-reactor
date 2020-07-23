@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:krambuhl/reaction-bot.git",
   "author": "Evan Krambuhl <evan.krambuhl@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@slack/events-api": "^2.3.3"
+  }
 }

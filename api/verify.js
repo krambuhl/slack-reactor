@@ -17,7 +17,8 @@ module.exports = (req, res) => {
       // handle event
       if (type === 'event_callback') {
         sendEvent(event)
-        res.status(200).json({ success: true })
+          .then(() => res.status(200).json({ success: true }))
+          .catch(() => res.status(500).json({ success: false }))
       }
     } else {
       res.status(401).json({ success: false, error: 'Unauthorized' })

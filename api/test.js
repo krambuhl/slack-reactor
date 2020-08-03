@@ -7,6 +7,6 @@ module.exports = (req, res) => {
     item_user: 'test_item_user',
     reaction: 'happy_face'
   })
-
-  res.status(200).json({ success: true })
+    .then(() => res.status(200).json({ success: true }))
+    .catch(() => res.status(500).json({ success: false }))
 }

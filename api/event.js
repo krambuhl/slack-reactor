@@ -9,6 +9,8 @@ module.exports = (req, res) => {
     if (token === SLACK_VERIFICATION_TOKEN) {
       const { event, type, challenge } = req.body
 
+      console.log({ type, event })
+
       // verify to slack that we are the real deal
       if (type === 'url_verification') {
         res.status(200).json({ challenge })

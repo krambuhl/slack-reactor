@@ -6,8 +6,12 @@ module.exports = (req, res) => {
   try {
     const { token } = req.body
 
+    console.log({ token })
+
     if (token === VERIFICATION_TOKEN) {
       const { event, type, challenge } = req.body
+
+      console.log({ type, challenge, event })
 
       // verify to slack that we are the real deal
       if (type === 'url_verification') {
@@ -21,9 +25,11 @@ module.exports = (req, res) => {
           .catch(() => res.status(500).json({ success: false }))
       }
     } else {
+      console.log({ success: false, error: 'Unauthorized' })
       res.status(401).json({ success: false, error: 'Unauthorized' })
     }
   } catch (err) {
+    console.log({ success: false, error: 'Bad Request' })
     res.status(400).json({ success: false, error: 'Bad Request' })
   }
 }

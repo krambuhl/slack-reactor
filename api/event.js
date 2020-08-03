@@ -1,12 +1,12 @@
 const sendEvent = require('../lib/sendEvent')
 
-const { VERIFICATION_TOKEN } = process.env
+const { SLACK_VERIFICATION_TOKEN } = process.env
 
 module.exports = (req, res) => {
   try {
     const { token } = req.body
 
-    if (token === VERIFICATION_TOKEN) {
+    if (token === SLACK_VERIFICATION_TOKEN) {
       const { event, type, challenge } = req.body
 
       // verify to slack that we are the real deal
@@ -21,9 +21,11 @@ module.exports = (req, res) => {
           .catch(() => res.status(500).json({ success: false }))
       }
     } else {
+      console.log({ success: false, error: 'Unauthorized' })
       res.status(401).json({ success: false, error: 'Unauthorized' })
     }
   } catch (err) {
+    console.log({ success: false, error: 'Bad Request' })
     res.status(400).json({ success: false, error: 'Bad Request' })
   }
 }

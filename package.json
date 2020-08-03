@@ -6,6 +6,7 @@
   "author": "Evan Krambuhl <evan.krambuhl@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@slack/events-api": "^2.3.3"
+    "@slack/events-api": "^2.3.3",
+    "pusher": "^3.0.1"
   }
 }

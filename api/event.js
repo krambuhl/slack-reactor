@@ -1,29 +1,4 @@
-const Pusher = require('pusher');
-
-const {
-  VERIFICATION_TOKEN,
-  PUSHER_APP_ID,
-  PUSHER_KEY,
-  PUSHER_SECRET
-} = process.env
-
-const pusher = new Pusher({
-  appId: PUSHER_APP_ID,
-  key: PUSHER_KEY,
-  secret: PUSHER_SECRET,
-  cluster: 'us3',
-  encrypted: true
-})
-
-function sendEvent(event) {
-  const { type, user, item_user, reaction } = event
-
-  pusher.trigger('emoji-reaction', type, {
-    user,
-    item_user,
-    reaction
-  });
-}
+const sendEvent = require('../lib/sendEvent')
 
 module.exports = (req, res) => {
   try {

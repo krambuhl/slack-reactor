@@ -1,14 +1,14 @@
 const sendEvent = require('../lib/sendEvent')
 
-const { VERIFICATION_TOKEN } = process.env
+const { SLACK_VERIFICATION_TOKEN } = process.env
 
 module.exports = (req, res) => {
   try {
     const { token } = req.body
 
-    console.log({ token })
+    console.log({ token, SLACK_VERIFICATION_TOKEN })
 
-    if (token === VERIFICATION_TOKEN) {
+    if (token === SLACK_VERIFICATION_TOKEN) {
       const { event, type, challenge } = req.body
 
       console.log({ type, challenge, event })

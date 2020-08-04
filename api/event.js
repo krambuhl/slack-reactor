@@ -22,15 +22,15 @@ module.exports = (req, res) => {
       else if (type === 'event_callback') {
         const { event } = req.body
         sendEvent(event)
-          .then(() => res.sendStatus(200))
-          .catch(() => res.sendStatus(500))
+          .then(() => res.status(200).json({ success: true }))
+          .catch(() => res.status(500).json({ success: false }))
       }
 
       // send commands
       else if (command !== undefined) {
         sendCommand(req.body)
-          .then(() => res.sendStatus(200))
-          .catch(() => res.sendStatus(500))
+          .then(() => res.status(200).send('Command sent!'))
+          .catch(() => res.status(500).json({ success: false }))
       }
 
       // catch everything else

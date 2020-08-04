@@ -29,7 +29,7 @@ module.exports = (req, res) => {
       // send commands
       else if (command !== undefined) {
         sendCommand(req.body)
-          .then(() => res.status(200).text('Command sent!'))
+          .then(() => res.status(200).send('Command sent!'))
           .catch(() => res.status(500).json({ success: false }))
       }
 

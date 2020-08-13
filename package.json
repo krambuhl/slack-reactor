@@ -1,12 +1,22 @@
 {
-  "name": "reaction-bot",
+  "name": "slack-reactor",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:krambuhl/reaction-bot.git",
+  "repository": "git@github.com:krambuhl/slack-reactor.git",
   "author": "Evan Krambuhl <evan.krambuhl@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./server",
+    "dev": "nodemon ./server & nodemon ./client",
+    "deploy": ""
+  },
   "dependencies": {
     "@slack/events-api": "^2.3.3",
-    "pusher": "^3.0.1"
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   }
 }
